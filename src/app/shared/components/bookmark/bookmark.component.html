@@ -15,7 +15,7 @@
 				<div class="form-group form-control-search" [class.open]="open">
 					<input type="text" [(ngModel)]="text" [ngModelOptions]="{standalone: true}"
 						(keyup)="searchTerm(text)" placeholder="Search..">
-					@if(menuItems?.length){
+					@if(menuItems.length){
 					<div class="Typeahead-menu" [class.is-open]="searchResult" id="boomark-search-outer">
 						@for(item of menuItems | slice:0:8 ;track item){
 						<div class="ProfileCard u-cf">

@@ -15,7 +15,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 })
 export class BookmarkComponent implements OnInit {
 
-  public menuItems: Menu[];
+  public menuItems: Menu[]=[];
   public items: Menu[];
   public text: string
   public open: boolean = false;

@@ -12,21 +12,21 @@ var body = document.getElementsByTagName("body")[0];
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule,FeatherIconsComponent,FormsModule ,RouterModule ,TranslateModule],
-  providers:[TranslateService],
+  imports: [CommonModule, FeatherIconsComponent, FormsModule, RouterModule, TranslateModule],
+  providers: [TranslateService],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
-  public menuItems: Menu[];
+  public menuItems: Menu[] = [];
   public items: Menu[];
   public searchResult: boolean = false;
   public searchResultEmpty: boolean = false;
   public openNav: boolean = false
   public right_sidebar: boolean = false
   public text: string;
-  public elem:any;
+  public elem: any;
   public isOpenMobile: boolean = false
   @Output() rightSidebarEvent = new EventEmitter<boolean>();
 
@@ -55,27 +55,27 @@ export class HeaderComponent implements OnInit {
     this.openNav = !this.openNav;
   }
 
-  public changeLanguage(lang:any) {
+  public changeLanguage(lang: any) {
     this.translate.use(lang)
   }
 
   searchTerm(term: any) {
     term ? this.addFix() : this.removeFix();
     if (!term) return this.menuItems = [];
-    let items :any = [];
+    let items: any = [];
     term = term.toLowerCase();
-    this.items.filter((menuItems:any) => {
+    this.items.filter((menuItems: any) => {
       if (menuItems.title.toLowerCase().includes(term) && menuItems.type === 'link') {
         items.push(menuItems);
       }
       if (!menuItems.children) return false
-      menuItems.children.filter((subItems:any) => {
+      menuItems.children.filter((subItems: any) => {
         if (subItems.title.toLowerCase().includes(term) && subItems.type === 'link') {
           subItems.icon = menuItems.icon
           items.push(subItems);
         }
         if (!subItems.children) return false
-        subItems.children.filter((suSubItems:any) => {
+        subItems.children.filter((suSubItems: any) => {
           if (suSubItems.title.toLowerCase().includes(term)) {
             suSubItems.icon = menuItems.icon
             items.push(suSubItems);
@@ -91,7 +91,7 @@ export class HeaderComponent implements OnInit {
     return
   }
 
-  checkSearchResultEmpty(items:any) {
+  checkSearchResultEmpty(items: any) {
     if (!items.length)
       this.searchResultEmpty = true;
     else
@@ -115,7 +115,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  SignOut(){}
+  SignOut() { }
 
   toggleFullScreen() {
     this.navServices.fullScreen = !this.navServices.fullScreen;

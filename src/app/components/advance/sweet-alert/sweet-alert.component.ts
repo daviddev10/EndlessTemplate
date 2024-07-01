@@ -209,7 +209,7 @@ export class SweetAlertComponent implements OnInit {
     Swal.fire({
       title: 'Custom animation with Animate.css',
       animation: false,
-      customClass: 'animated tada'
+      // customClass: 'animated tada'
     });
   }
 
@@ -234,7 +234,7 @@ export class SweetAlertComponent implements OnInit {
             center left
             no-repeat
           `,
-      customClass: 'text-dark'
+      // customClass: 'text-dark'
     });
   }
 
